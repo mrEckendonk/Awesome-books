@@ -44,15 +44,46 @@ const displayBooks = () => {
 };
 
 /* form functions */
+const form = document.querySelector('form');
+const author = form.querySelector('#author');
+const title = form.querySelector('#title');
 
 const addNew = () => {
-  const form = document.querySelector('form');
-  const author = form.querySelector('#author').value;
-  const title = form.querySelector('#title').value;
-
-  addBook(title, author);
+  bookTitle = title.value;
+  bookAuthor = author.value;
+  addBook(bookTitle, bookAuthor);
   displayBooks();
 };
+
+const removeBtnList = document.querySelectorAll('.remove');
+for ( i = 0; i < removeBtnList.length; i++) {
+  removeBtnList[i].addEventListener('click', remove(i));
+}
+
+
+const remove = (i) => {
+  const book = books[i];
+  removeBook(book.title);
+  displayBooks();
+}
+
+const saveDate = () => {
+  const formData = {
+    formAuthor: author.value,
+    formTitle: title.value
+  };
+  localStorage.setItem('formData', JSON.stringify(formData));
+};
+
+author.addEventListener('change', saveDate);
+title.addEventListener('change', saveDate);
+
+window.addEventListener('load', () => {
+  const formData = JSON.parse(localStorage.getItem('formData'));
+  author.value = formData.name;
+  title.value = formData.email;
+});
+
 
 // addBook("The Lord of the Rings", "J.R.R. Tolkien");
 // addBook("The Hobbit", "J.R.R. Tolkien");
