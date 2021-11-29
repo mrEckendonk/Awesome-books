@@ -1,11 +1,19 @@
 let books = [];
 
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+    this.id = books.length + 1;
+  }
+}
+
 const addBook = (title, author) => {
-  books.push({ title, author });
+  books.push(new Book(title, author));
 };
 
-const removeBook = (title) => {
-  books = books.filter((book) => book.title !== title);
+const removeBook = (id) => {
+  books = books.filter((book) => book.id !== id);
 };
 
 const showBooks = () => {
@@ -30,10 +38,10 @@ const displayBooks = () => {
     h3.textContent = book.author;
 
     let removeBtn = document.createElement('button');
-    removeBtn.classList.add('remove-' + books.indexOf(book));
+    removeBtn.classList.add('remove-' + book.id);
     removeBtn.textContent = 'Remove';
     removeBtn.addEventListener('click', () => {
-      removeBook(books.title);
+      removeBook(book.id);
       displayBooks();
     });
 
@@ -53,13 +61,6 @@ const displayBooks = () => {
 const form = document.querySelector('form');
 const author = form.querySelector('#author');
 const title = form.querySelector('#title');
-
-const addNew = () => {
-  bookTitle = title.value;
-  bookAuthor = author.value;
-  addBook(bookTitle, bookAuthor);
-  displayBooks();
-};
 
 const rmvListener = () => {
   for (let i = 0; i < books.length; i++) {
@@ -81,5 +82,11 @@ window.addEventListener('load', () => {
 
 window.onload = displayBooks();
 const addBtn = document.querySelector('#add-btn');
-addBtn.onclick = addNew;
+addBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  bookTitle = title.value;
+  bookAuthor = author.value;
+  addBook(bookTitle, bookAuthor);
+  displayBooks();
+});
 
