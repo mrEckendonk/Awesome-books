@@ -1,36 +1,50 @@
-class Books {
-  constructor(books = []) {
-    this.list = books;
-  }
-}
+// class Books {
+//   constructor(books = []) {
+//     this.list = books;
+//   }
+// }
 
-class Book {
+// class Book {
+//   constructor(title, author, id) {
+//     this.title = title;
+//     this.author = author;
+//     this.id = id;
+//   }
+// }
+
+class Methods {
   constructor(title, author, id) {
     this.title = title;
     this.author = author;
     this.id = id;
   }
-}
-
-class Methods {
-  addBook = (book) => {
-    books.list.push(book);
+  addBook = (bookTitle, bookAuthor, bookId) => {
+    const book = {
+      title: bookTitle,
+      author: bookAuthor,
+      id: bookId
+    }
+    methods.books.push(book);
   };
   removeBook = (id) => {
-    books.list.splice(books.list[id-1], 1);
+    methods.books.splice(methods.books[id-1], 1);
   };
 }
 
+let methods = new Methods();
+methods.books = [];
+
 const saveData = () => {
-  localStorage.setItem('myBooks', JSON.stringify(books.list));
+  localStorage.setItem('myBooks', JSON.stringify(methods.books));
 };
 
 const displayBooks = () => {
   console.log("display");
   const booksList = document.querySelector('.books');
   booksList.innerHTML = '';
-  for (let i = 0; i < books.list.length; i += 1) {
-    const book = books.list[i];
+  for (let i = 0; i < methods.books.length; i += 1) {
+    const book = methods.books[i];
+    console.log("book");
     console.log(book);
     const bookElement = document.createElement('div');
     bookElement.classList.add('book');
@@ -68,9 +82,9 @@ const displayBooks = () => {
 const getData = () => {
   const formData = JSON.parse(localStorage.getItem('myBooks'));
   if (formData == null) {
-    books.list = [];
+    methods.books = [];
   } else {
-    books.list = formData;
+    methods.books = formData;
   }
 };
 
@@ -85,15 +99,12 @@ addBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const bookTitle = title.value;
   const bookAuthor = author.value;
-  const bookId = books.list.length + 1;
-  const newBook = new Book(bookTitle, bookAuthor, bookId);
-  methods.addBook(newBook);
+  const bookId = methods.books.length + 1;
+  methods.addBook(bookTitle, bookAuthor, bookId);
   displayBooks();
   saveData();
 });
 
-let books = new Books();
-let methods = new Methods();
 /* form functions */
 const form = document.querySelector('form');
 const author = form.querySelector('#author');
