@@ -17,7 +17,7 @@ class Methods {
     books.list.push(book);
   };
   removeBook = (id) => {
-    books.list = books.list.filter((bk) => bk.id === id);
+    books.list.splice(books.list[id-1], 1);
   };
 }
 
@@ -47,6 +47,8 @@ const displayBooks = () => {
     removeBtn.classList.add(`remove-${book.id}`);
     removeBtn.textContent = 'Remove';
     removeBtn.addEventListener('click', () => {
+      console.log("the id of the book is:")
+      console.log(book.id)
       methods.removeBook(book.id);
       displayBooks();
     });
