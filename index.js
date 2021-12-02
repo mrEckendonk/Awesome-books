@@ -24,10 +24,10 @@ class Methods {
       author: bookAuthor,
       id: bookId
     }
-    methods.books.push(book);
+    this.books.push(book);
   };
   removeBook = (id) => {
-    methods.books.splice(methods.books[id-1], 1);
+    this.books.splice(this.books[id-1], 1);
   };
 }
 
@@ -94,6 +94,11 @@ window.onbeforeunload = () => {
   displayBooks();
 };
 
+/* form functions */
+const form = document.querySelector('form');
+const author = form.querySelector('#author');
+const title = form.querySelector('#title');
+
 const addBtn = document.querySelector('#add-btn');
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
@@ -105,9 +110,5 @@ addBtn.addEventListener('click', (e) => {
   saveData();
 });
 
-/* form functions */
-const form = document.querySelector('form');
-const author = form.querySelector('#author');
-const title = form.querySelector('#title');
 getData();
 displayBooks();
