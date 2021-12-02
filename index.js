@@ -1,27 +1,37 @@
-let books = [];
+class Books {
+  constructor(books = []) {
+    this.list = books;
+  }
+}
+
+class Book {
+  constructor(title, author, id) {
+    this.title = title;
+    this.author = author;
+    this.id = id;
+  }
+}
+
+class Methods {
+  addBook = (book) => {
+    books.list.push(book);
+  };
+  removeBook = (id) => {
+    books.list = books.list.filter((bk) => bk.id === id);
+  };
+}
 
 const saveData = () => {
-  localStorage.setItem('myBooks', JSON.stringify(books));
-};
-
-const addBook = (title, author) => {
-  const awesomeBook = {
-    title,
-    author,
-    id: books.length + 1,
-  };
-  books.push(awesomeBook);
-};
-
-const removeBook = (id) => {
-  books = books.filter((book) => book.id !== id);
+  localStorage.setItem('myBooks', JSON.stringify(books.list));
 };
 
 const displayBooks = () => {
+  console.log("display");
   const booksList = document.querySelector('.books');
   booksList.innerHTML = '';
-  for (let i = 0; i < books.length; i += 1) {
-    const book = books[i];
+  for (let i = 0; i < books.list.length; i += 1) {
+    const book = books.list[i];
+    console.log(book);
     const bookElement = document.createElement('div');
     bookElement.classList.add('book');
 
@@ -37,7 +47,7 @@ const displayBooks = () => {
     removeBtn.classList.add(`remove-${book.id}`);
     removeBtn.textContent = 'Remove';
     removeBtn.addEventListener('click', () => {
-      removeBook(book.id);
+      methods.removeBook(book.id);
       displayBooks();
     });
 
@@ -53,21 +63,16 @@ const displayBooks = () => {
   saveData();
 };
 
-/* form functions */
-const form = document.querySelector('form');
-const author = form.querySelector('#author');
-const title = form.querySelector('#title');
-
 const getData = () => {
   const formData = JSON.parse(localStorage.getItem('myBooks'));
   if (formData == null) {
-    books = [];
+    books.list = [];
   } else {
-    books = formData;
+    books.list = formData;
   }
 };
 
-window.onload = getData();
+// window.onload = getData();
 window.onbeforeunload = () => {
   getData();
   displayBooks();
@@ -78,10 +83,18 @@ addBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const bookTitle = title.value;
   const bookAuthor = author.value;
-  addBook(bookTitle, bookAuthor);
+  const bookId = books.list.length + 1;
+  const newBook = new Book(bookTitle, bookAuthor, bookId);
+  methods.addBook(newBook);
   displayBooks();
   saveData();
 });
 
+let books = new Books();
+let methods = new Methods();
+/* form functions */
+const form = document.querySelector('form');
+const author = form.querySelector('#author');
+const title = form.querySelector('#title');
 getData();
 displayBooks();
