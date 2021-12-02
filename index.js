@@ -18,20 +18,22 @@ class Methods {
     this.author = author;
     this.id = id;
   }
+
   addBook = (bookTitle, bookAuthor, bookId) => {
     const book = {
       title: bookTitle,
       author: bookAuthor,
-      id: bookId
-    }
+      id: bookId,
+    };
     this.books.push(book);
   };
+
   removeBook = (id) => {
-    this.books.splice(this.books[id-1], 1);
+    this.books.splice(this.books[id - 1], 1);
   };
 }
 
-let methods = new Methods();
+const methods = new Methods();
 methods.books = [];
 
 const saveData = () => {
@@ -39,13 +41,10 @@ const saveData = () => {
 };
 
 const displayBooks = () => {
-  console.log("display");
   const booksList = document.querySelector('.books');
   booksList.innerHTML = '';
   for (let i = 0; i < methods.books.length; i += 1) {
     const book = methods.books[i];
-    console.log("book");
-    console.log(book);
     const bookElement = document.createElement('div');
     bookElement.classList.add('book');
 
@@ -61,8 +60,6 @@ const displayBooks = () => {
     removeBtn.classList.add(`remove-${book.id}`);
     removeBtn.textContent = 'Remove';
     removeBtn.addEventListener('click', () => {
-      console.log("the id of the book is:")
-      console.log(book.id)
       methods.removeBook(book.id);
       displayBooks();
     });
