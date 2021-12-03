@@ -1,4 +1,6 @@
-class Display {
+import BookList from './BookList.js';
+
+export default class Display {
   constructor() {
     this.booklist = new BookList();
   }

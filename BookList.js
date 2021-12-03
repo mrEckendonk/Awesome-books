@@ -1,6 +1,6 @@
-class BookList {
+export default class BookList {
   constructor() {
-    this.books = []
+    this.books = [];
   }
 
   addBook = (bookTitle, bookAuthor) => {
@@ -17,7 +17,7 @@ class BookList {
   };
 
   removeBook = (id) => {
-    this.books = this.books.filter(book => book.id !== id);
+    this.books = this.books.filter((book) => book.id !== id);
   };
 
   getData = () => {
@@ -31,9 +31,9 @@ class BookList {
 
   generateId = () => {
     let id = Math.ceil(Math.random() * 100000000000);
-    while (this.books.find(book => book.id === id)) {
+    while (this.books.indexOf(id) !== -1) {
       id = Math.ceil(Math.random() * 100000000000);
     }
-    return  id;
+    return id;
   };
 }

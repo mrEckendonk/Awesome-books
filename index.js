@@ -1,3 +1,5 @@
+import Display from './DomManip.js';
+
 const display = new Display();
 
 window.onbeforeunload = () => {
