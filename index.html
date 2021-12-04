@@ -1,22 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
     <title>Awsome Books</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Varela+Round"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
   </head>
-  <body>
-    <h1>Awsome Books</h1>
-    <div class="books">
-    </div>
-    <form class="add-book">
-      <input id="title" type="text" name="title" placeholder="Title" />
-      <input id="author" type="text" name="author" placeholder="author" />
-      <button id="add-btn" type="button">Add Book</button>
-    </form>
-    <script src="BookList.js"></script>
-    <script src="DomManip.js"></script>
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">Awsome Books</a>
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead">
+      <div
+        class="
+          container
+          px-4 px-lg-5
+          d-flex
+          h-100
+          align-items-center
+          justify-content-center
+        "
+      >
+        <div class="d-flex justify-content-center">
+          <div class="text-center">
+            <h1 class="mx-auto my-0 text-uppercase">Awsome Books</h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">
+              The best, free application to maintain your books online
+            </h2>
+            <a class="btn btn-primary" href="#add-books">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="signup-section" id="add-books">
+      <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+          <div class="col-md-10 col-lg-8 mx-auto text-center">
+            <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+            <h2 class="text-white mb-5">Add your books here!</h2>
+            <form
+              class="form-signup add-book"
+              id="contactForm"
+            >
+              <!-- book title input-->
+              <div class="row input-group-newsletter">
+                <div class="col">
+                  <input
+                    class="form-control title"
+                    id="emailAddress"
+                    name="title"
+                    type="text"
+                    placeholder="Enter book title ..."
+                    aria-label="Enter book title ......"
+                  />
+                </div>
+              </div>
+              <br />
+              <div class="row input-group-newsletter">
+                <div class="col">
+                  <input
+                    class="form-control author"
+                    id="emailAddress"
+                    type="text"
+                    name="author"
+                    placeholder="Enter Author..."
+                    aria-label="Enter Author.."
+                  />
+                </div>
+                <div class="col-auto">
+                  <button
+                    class="add-btn btn btn-primary"
+                    id="submitButton"
+                    type="button"
+                  >
+                    Add Book
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact-->
+    <section class="contact-section bg-black">
+      <div class="container px-4 px-lg-5">
+        <div class="books">
+          <div class="row gx-4 gx-lg-5 mb-5">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="book card py-4 h-100">
+                <div class="card-body text-center">
+                  <i class="fas fa-book text-primary mb-2"></i>
+                  <h4 class="text-uppercase m-0">y Seas</h4>
+                  <hr class="my-4 mx-auto" />
+                  <div class="small text-black-50">
+                    Mike
+                  </div>
+                  <div class="col-auto mt-4">
+                    <button
+                      class="btn btn-secondary"
+                      id="submitButton"
+                      type="button"
+                    >
+                      Remove Book
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social d-flex justify-content-center">
+          <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+          <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+          <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
+    <footer class="footer bg-black small text-center text-white-50">
+      <div class="container px-4 px-lg-5">
+        Copyright &copy; Awesome Books 2021
+      </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
     <script src="index.js"></script>
   </body>
 </html>
