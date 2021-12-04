@@ -40,35 +40,54 @@ class BookList {
   displayBooks = () => {
     const booksList = document.querySelector('.books');
     booksList.innerHTML = '';
+    let row = document.createElement('div');
+    row.classList.add('row', 'gx-4', 'gx-lg-5', 'mb-5');
     for (let i = 0; i < this.books.length; i += 1) {
       const book = this.books[i];
-      const bookElement = document.createElement('div');
-      bookElement.classList.add('book');
+      const column = document.createElement('div');
+      column.classList.add('col-md-4', 'mb-3', 'mb-md-0');
 
-      const h2 = document.createElement('h2');
-      h2.classList.add('title');
-      h2.textContent = book.title;
+      /* start */
+      const template = `
+      <div class="book card py-4 h-100">
+        <div class="card-body text-center">
+          <i class="fas fa-book text-primary mb-2"></i>
+          <h4 class="title text-uppercase m-0">${book.title}</h4>
+          <hr class="my-4 mx-auto" />
+          <div class="author small text-black-50">
+            ${book.author}
+          </div>
+          <div class="col-auto mt-4">
+            <button
+              class="btn btn-remove btn-secondary remove-${book.id}"
+              type="button"
+            >
+              Remove Book
+            </button>
+          </div>
+        </div>
+      </div>
+      `;
+      /* end  */
 
-      const h3 = document.createElement('h3');
-      h3.classList.add('author');
-      h3.textContent = book.author;
+      column.innerHTML = template;
+      row.appendChild(column);
 
-      const removeBtn = document.createElement('button');
-      removeBtn.classList.add(`remove-${book.id}`);
-      removeBtn.textContent = 'Remove';
+      if ((i + 1) % 3 === 0 && i !== 0) {
+        booksList.appendChild(row);
+        row = document.createElement('div');
+        row.classList.add('row', 'gx-4', 'gx-lg-5', 'mb-5');
+      } else {
+        booksList.appendChild(row);
+      }
+    }
+    for (let i = 0; i < this.books.length; i += 1) {
+      const book = this.books[i];
+      const removeBtn = document.querySelector(`.remove-${book.id}`);
       removeBtn.addEventListener('click', () => {
         this.removeBook(book.id);
         this.displayBooks();
       });
-
-      bookElement.appendChild(h2);
-      bookElement.appendChild(h3);
-      bookElement.appendChild(removeBtn);
-
-      booksList.appendChild(bookElement);
-
-      const hr = document.createElement('hr');
-      booksList.appendChild(hr);
     }
     this.saveData();
   };
@@ -83,10 +102,10 @@ window.onbeforeunload = () => {
 
 /* form functions */
 const form = document.querySelector('form');
-const author = form.querySelector('#author');
-const title = form.querySelector('#title');
+const author = form.querySelector('.author');
+const title = form.querySelector('.title');
 
-const addBtn = document.querySelector('#add-btn');
+const addBtn = document.querySelector('.add-btn');
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
   const bookTitle = title.value;
