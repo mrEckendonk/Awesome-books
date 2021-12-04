@@ -9,11 +9,11 @@ This is  Pair to Pair project to help you find the best books to read.
 # Screenshots
 - Desktop Layout
 
-![Desktop_Layout](assets/imgs/desktop.png)
+![Desktop_Layout](assets/img/desktop.png)
 
 - Mobile Layout
 
-![Mobile_Layout](assets/imgs/mobile.png)
+![Mobile_Layout](assets/img/mobile.png)
 
 
 
@@ -28,7 +28,7 @@ Additional description about the project and its features.
 - Git & GitHub
 ## Live Demo link
 
-[Live Demo Link](https://eckybrazzz.github.io/Awesome-books//)
+[Live Demo Link](https://eckybrazzz.github.io/Awesome-books/)
 
 
 ## Getting Started
