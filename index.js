@@ -38,13 +38,11 @@ class BookList {
   };
 
   displayBooks = () => {
-    console.log("display works");
     const booksList = document.querySelector('.books');
     booksList.innerHTML = '';
     let row = document.createElement('div');
     row.classList.add('row', 'gx-4', 'gx-lg-5', 'mb-5');
     for (let i = 0; i < this.books.length; i += 1) {
-      console.log(i);
       const book = this.books[i];
       const column = document.createElement('div');
       column.classList.add('col-md-4', 'mb-3', 'mb-md-0');
@@ -54,7 +52,7 @@ class BookList {
       <div class="book card py-4 h-100">
         <div class="card-body text-center">
           <i class="fas fa-book text-primary mb-2"></i>
-          <h4 class="title text-uppercase m-0">${book.author}</h4>
+          <h4 class="title text-uppercase m-0">${book.title}</h4>
           <hr class="my-4 mx-auto" />
           <div class="author small text-black-50">
             ${book.author}
@@ -75,14 +73,11 @@ class BookList {
 
       column.innerHTML = template;
       row.appendChild(column);
-      console.log(row);
-      console.log(i);
 
-      if (i % 3 === 0 && i !== 0) {
+      if ((i + 1) % 3 === 0 && i !== 0) {
         booksList.appendChild(row);
         row = document.createElement('div');
         row.classList.add('row', 'gx-4', 'gx-lg-5', 'mb-5');
-        console.log('addded first row');
       } else {
         booksList.appendChild(row);
       }
