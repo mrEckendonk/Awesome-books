@@ -19,3 +19,7 @@
   background-attachment: scroll;
   background-size: cover;
 }
+
+.lower-section {
+  min-height: 100vh;
+}

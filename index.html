@@ -15,6 +15,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+    <!-- luxon cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.1.1/build/global/luxon.min.js" defer></script>
+    <script src="time.js" defer></script>
+
     <!-- Font Awesome icons (free version)-->
     <script
       src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
@@ -51,6 +55,13 @@
           Menu
           <i class="fas fa-bars"></i>
         </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" id="listNav" href="#lower">List</a></li>
+              <li class="nav-item"><a class="nav-link" id="addNav" href="#lower">Add New</a></li>
+              <li class="nav-item"><a class="nav-link" id="contactNav" href="#lower">Contact</a></li>
+          </ul>
+      </div>
       </div>
     </nav>
     <!-- Masthead-->
@@ -71,65 +82,20 @@
             <h2 class="text-white-50 mx-auto mt-2 mb-5">
               The best, free application to maintain your books online
             </h2>
-            <a class="btn btn-primary" href="#add-books">Get Started</a>
+            <a class="btn btn-primary" href="#lower">Get Started</a>
           </div>
         </div>
       </div>
     </header>
 
-    <section class="signup-section" id="add-books">
-      <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5">
-          <div class="col-md-10 col-lg-8 mx-auto text-center">
-            <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-            <h2 class="text-white mb-5">Add your books here!</h2>
-            <form
-              class="form-signup add-book"
-              id="contactForm"
-            >
-              <!-- book title input-->
-              <div class="row input-group-newsletter">
-                <div class="col">
-                  <input
-                    class="form-control title"
-                    id="emailAddress"
-                    name="title"
-                    type="text"
-                    placeholder="Enter book title ..."
-                    aria-label="Enter book title ......"
-                  />
-                </div>
-              </div>
-              <br />
-              <div class="row input-group-newsletter">
-                <div class="col">
-                  <input
-                    class="form-control author"
-                    type="text"
-                    name="author"
-                    placeholder="Enter Author..."
-                    aria-label="Enter Author.."
-                  />
-                </div>
-                <div class="col-auto">
-                  <button
-                    class="add-btn btn btn-primary"
-                    id="submitButton"
-                    type="button"
-                  >
-                    Add Book
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+    
     <!-- Contact-->
-    <section class="contact-section bg-black">
+    <section class="lower-section contact-section bg-black" id="lower">
       <div class="container px-4 px-lg-5">
-        <div class="books">
+        <div class="time text-white fw-bold text-end">
+          Current Time: <span id="time"></span>
+        </div>
+        <div class="books d-none" id="books-list">
           <div class="row gx-4 gx-lg-5 mb-5">
             <div class="col-md-4 mb-3 mb-md-0">
               <div class="book card py-4 h-100">
@@ -153,6 +119,84 @@
             </div>
           </div>
         </div>
+        <div class="signup-section d-none" id="add-books">
+          <div class="row gx-4 gx-lg-5">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+              <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+              <h2 class="text-white mb-5">Add your books here!</h2>
+              <form
+                class="form-signup add-book"
+                id="contactForm"
+              >
+                <!-- book title input-->
+                <div class="row input-group-newsletter">
+                  <div class="col">
+                    <input
+                      class="form-control title"
+                      id="emailAddress"
+                      name="title"
+                      type="text"
+                      placeholder="Enter book title ..."
+                      aria-label="Enter book title ......"
+                    />
+                  </div>
+                </div>
+                <br />
+                <div class="row input-group-newsletter">
+                  <div class="col">
+                    <input
+                      class="form-control author"
+                      type="text"
+                      name="author"
+                      placeholder="Enter Author..."
+                      aria-label="Enter Author.."
+                    />
+                  </div>
+                  <div class="col-auto">
+                    <button
+                      class="add-btn btn btn-primary"
+                      id="submitButton"
+                      type="button"
+                    >
+                      Add Book
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="contact" id="contact-list">
+          <div class="row gx-4 gx-lg-5">
+            <div class="col-md-10 col-lg-8 mx-auto text-center bg-gradient p-5">
+              <h2 class="text-white d-flex justify-content-center align-items-center gap-2">
+                <i class="far fa-paper-plane fa-1x mb-2 text-white"></i>
+                <span>Contact us</span>
+              </h2>
+              <p class="lead text-white">
+                For any questions or suggestions, please contact us.
+              </p>
+              <ul class="list-unstyled">
+                <li class="lead text-white">
+                  <i class="fas fa-map-marker-alt fa-1x mr-3 text-white"></i>
+                  <span>
+                    <a href="https://www.google.com/search?q=deurne&rlz=1C1PNJB_enEG974EG974&oq=DEURNE&aqs=chrome.0.0i512j46i512j46i175i199i512j0i512j46i512j46i175i199i512j0i512l4.1579j0j7&sourceid=chrome&ie=UTF-8">Deurne, Netherlands</a>
+                  </span>
+                </li>
+                <li class="lead text-white">
+                  <i class="fas fa-phone fa-1x mr-3 text-white"></i>
+                  <span>+31 6 12345678</span>
+                </li>
+                <li class="lead text-white">
+                  <i class="fas fa-envelope fa-1x mr-3 text-white"></i>
+                  <span>
+                    <a href="mailto:vecks@vecks.com.br">email</a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="social d-flex justify-content-center">
           <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
           <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
@@ -173,5 +217,6 @@
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
     <script src="index.js"></script>
+    <script src="nav.js"></script>
   </body>
 </html>
