@@ -60,7 +60,6 @@ class BookList {
           <div class="col-auto mt-4">
             <button
               class="btn btn-remove btn-secondary remove-${book.id}"
-              id="submitButton"
               type="button"
             >
               Remove Book
