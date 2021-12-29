@@ -1,7 +1,5 @@
 # Awesome-books
 
-![](https://img.shields.io/badge/Microverse-blueviolet)
-
 # Project Name : Awsome Books ♻️
 
 This is  Pair to Pair project to help you find the best books to read.
@@ -26,9 +24,10 @@ Additional description about the project and its features.
 - Javascript
 - VScode
 - Git & GitHub
+- Bootstrap
 ## Live Demo link
 
-[Live Demo Link](https://eckybrazzz.github.io/Awesome-books/)
+[Live Demo Link](https://mrEckendonk.github.io/Awesome-books/)
 
 
 ## Getting Started
@@ -48,7 +47,7 @@ To get a working local copy up and running follow these simple steps
 
 
 ```
-$ git clone https://github.com/Eckybrazzz/Awesome-books.git
+$ git clone https://github.com/mrEckendonk/Awesome-books.git
 ```
 - Finally, run the next command in the terminal to see the web app in your local browser, or also, you can use Live Server in Visual Studio Code.
 ```
@@ -72,15 +71,15 @@ N/A
 
 👤 **Author 2 **
 
-- GitHub: [@Eckybrazzz](https://github.com/Eckybrazzz)
-- Twitter: [@twitterhandle](https://twitter.com/mike_eckendonk)
+- GitHub: [@mrEckendonk](https://github.com/mrEckendonk)
+- Twitter: [@twitter](https://twitter.com/mike_eckendonk)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mike-van-eckendonk)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Eckybrazzz/Awesome-books/issues).
+Feel free to check the [issues page](https://github.com/mrEckendonk/Awesome-books/issues).
 
 ## Show your support
 
